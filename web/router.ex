@@ -24,7 +24,14 @@ defmodule Scratch.Router do
     resources "/users", UserController, only: [:index, :new, :show, :create]
 
     resources "/sessions", SessionController, only: [:new, :create, :delete]
+
+    get "/watch/:id", WatchController, :show
+  end
+
+  scope "/manage", Scratch do
+    pipe_through [:browser, :authenticate_user]
     
+    resources "/videos", VideoController
   end
 
   # Other scopes may use custom stacks.

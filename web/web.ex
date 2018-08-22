@@ -37,6 +37,8 @@ defmodule Scratch.Web do
 
       import Scratch.Router.Helpers
       import Scratch.Gettext
+
+      import Scratch.Auth, only: [authenticate_user: 2]
     end
   end
 
@@ -59,6 +61,8 @@ defmodule Scratch.Web do
   def router do
     quote do
       use Phoenix.Router
+
+      import Scratch.Auth, only: [authenticate_user: 2]
     end
   end
 

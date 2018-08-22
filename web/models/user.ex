@@ -6,7 +6,9 @@ defmodule Scratch.User do
     field :username, :string
     field :password, :string, virtual: true
     field :password_hash, :string
-
+    has_many :videos, Scratch.Video
+    has_many :annotations, Scratch.Annotation
+    
     timestamps
   end
   
@@ -15,6 +17,7 @@ defmodule Scratch.User do
     |> cast(params, ~w(name username),[])
     |> validate_required([ :username]) 
     |> validate_length(:username, min: 1, max: 20)
+    |> unique_constraint(:username)
   end
 
   def registration_changeset(model, params) do
