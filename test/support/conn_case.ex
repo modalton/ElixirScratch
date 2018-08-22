@@ -26,7 +26,8 @@ defmodule Scratch.ConnCase do
       import Ecto.Query
 
       import Scratch.Router.Helpers
-
+      import Scratch.TestHelpers
+      
       # The default endpoint for testing
       @endpoint Scratch.Endpoint
     end
