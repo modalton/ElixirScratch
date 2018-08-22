@@ -8,8 +8,12 @@ defmodule Scratch do
 
     # Define workers and child supervisors to be supervised
     children = [
+
       # Start the Ecto repository
       supervisor(Scratch.Repo, []), 
+
+      supervisor(Scratch.InfoSys.Supervisor, []), # our infosys supervisor
+
       # Start the endpoint when the application starts
       supervisor(Scratch.Endpoint, []),
       # Start your own worker by calling: Scratch.Worker.start_link(arg1, arg2, arg3)
